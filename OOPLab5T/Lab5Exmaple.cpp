@@ -3,6 +3,63 @@
 #include "Lab5Exmaple.h"
 using namespace std;
 
+namespace Task1 {
+	class Liquid {
+	private:
+		string name;
+		double densities;
+	public: 
+		Liquid() {
+			cout << " Liquid main class " << endl;
+		}
+		Liquid(Liquid& s) {
+			name = s.name;
+			densities = s.densities;
+			cout << " Liquid copy main class(parent) " << endl;
+		}
+		Liquid(double param) : densities(param) {
+			cout << " Liquid constructor with param densities " << endl;
+		}
+		void Show() {
+			cout << " Liquid show ";
+		}
+		Liquid& operator=(const Liquid& s) {
+			name = s.name;
+			densities = s.densities;
+		}
+
+		virtual ~Liquid() {
+			cout << " Liquid derived class (destructor) " << endl;
+		}
+
+	};
+
+	class AlcoholDrinks : public Liquid {
+	private:
+		double strenght;
+	public: 
+		AlcoholDrinks() {
+			cout << " Derived(child) class " << endl;
+		}
+		AlcoholDrinks(AlcoholDrinks& s) {
+			cout << " Derived copy class(reference) " << endl;
+		}
+		void ShowAlcoholDrinks() {
+			cout << " ShowAlcoholDrinks " << endl;
+		}
+		~AlcoholDrinks() {
+			cout << " AlcoholDrinks destructor " << endl;
+		}
+		AlcoholDrinks(double strenght) {
+		}
+		AlcoholDrinks& operator=(const Liquid& s) {
+
+		}
+
+
+	};
+}
+
 namespace Exp4 {
 	class Base {
 		int pv;
@@ -153,7 +210,6 @@ namespace Exp4 {
 	}
 
 }
-
 namespace Exp5 {
 	class Base {
 		int data_base;
@@ -910,3 +966,5 @@ istream& operator>>(istream& is, Adult& a) {
 		is >> a.nameChild[i];
 	return is;
 }
+
+
