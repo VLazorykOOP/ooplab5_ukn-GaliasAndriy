@@ -3,63 +3,6 @@
 #include "Lab5Exmaple.h"
 using namespace std;
 
-namespace Task1 {
-	class Liquid {
-	private:
-		string name;
-		double densities;
-	public: 
-		Liquid() {
-			cout << " Liquid main class " << endl;
-		}
-		Liquid(Liquid& s) {
-			name = s.name;
-			densities = s.densities;
-			cout << " Liquid copy main class(parent) " << endl;
-		}
-		Liquid(double param) : densities(param) {
-			cout << " Liquid constructor with param densities " << endl;
-		}
-		void Show() {
-			cout << " Liquid show ";
-		}
-		Liquid& operator=(const Liquid& s) {
-			name = s.name;
-			densities = s.densities;
-		}
-
-		virtual ~Liquid() {
-			cout << " Liquid derived class (destructor) " << endl;
-		}
-
-	};
-
-	class AlcoholDrinks : public Liquid {
-	private:
-		double strenght;
-	public: 
-		AlcoholDrinks() {
-			cout << " Derived(child) class " << endl;
-		}
-		AlcoholDrinks(AlcoholDrinks& s) {
-			cout << " Derived copy class(reference) " << endl;
-		}
-		void ShowAlcoholDrinks() {
-			cout << " ShowAlcoholDrinks " << endl;
-		}
-		~AlcoholDrinks() {
-			cout << " AlcoholDrinks destructor " << endl;
-		}
-		AlcoholDrinks(double strenght) {
-		}
-		AlcoholDrinks& operator=(const Liquid& s) {
-
-		}
-
-
-	};
-}
-
 namespace Exp4 {
 	class Base {
 		int pv;
@@ -898,7 +841,7 @@ int mainExample2() {
 			cout << " ??? \n";
 		}
 	} while (Choice != 'q');
-	cout << " Exit from test! Bye! \n";
+	cout << "	Exit from test!  \n";
 	return 3;
 }
 int mainExample3() {
@@ -912,6 +855,80 @@ int mainExample4() {
 int mainExample5() {
 	Exp2::Exp2main();
 	return 5;
+}
+
+int mainTask1() {
+	char Choice;
+	do {
+		cout << "\n---------| Main menu |--------\n";
+		cout << "	1 - Default constructor Liquid \n";
+		cout << "	2 - Default constructor AlcoholDrinks \n";
+		cout << "	3 - Constructor AlcoholDrinks(string name, double dens, double stren) \n";
+		cout << "	4 - Constuctor of copying (AlcoholDrinks& s) \n";
+		cout << "	5 - Set densities \n";
+		cout << "	6 - Set strength \n";
+		/*cout << "	7 - Constructor AlcoholDrinks(string name, double stren) \n";*/
+
+		cout << "	q - Quit \n\n";
+		cout << "	Your choice: ";
+		cin >> Choice;
+		switch (Choice) {
+			case '1': {
+				Liquid test;
+				cout << test.toString() << endl;
+			} break; 
+			case '2': {
+				AlcoholDrinks alcohol;
+				cout << alcohol.toString() << endl;
+			} break; 
+			case '3': {
+				AlcoholDrinks shot("Jameson whiskey", 0.9408, 40);
+				string res = shot.toString();
+				cout << res << endl;
+			} break;
+			case '4': {
+				AlcoholDrinks shot("Captain Morgan", 0.9901, 40);
+				string res = shot.toString();
+				cout << res << endl;
+				AlcoholDrinks copyShot(shot);
+				string copyRes = copyShot.toString();
+				cout << copyRes << endl;
+			} break;
+			case '5': {
+				AlcoholDrinks shot("Jagermeister", 1.0072, 40);
+				shot.toString();
+				cout << shot.toString() << endl;
+				cout << " Change densities: ";
+				float dens;
+				while (!(cin >> dens)) {
+					cin.clear();
+					cin.ignore(MAXSHORT, '\n');
+					cout << "bad input \n";
+				};
+				shot.setDensities(dens);
+				cout << "\n    New record " << shot.toString() << endl;
+			} break;
+			case '6': {
+				AlcoholDrinks shot("Oakheart", 0.9500, 35);
+				shot.toString();
+				cout << shot.toString() << endl;
+				cout << " Change densities: ";
+				float stren;
+				while (!(cin >> stren)) {
+					cin.clear();
+					cin.ignore(MAXSHORT, '\n');
+					cout << "bad input \n";
+				};
+				shot.setStrength(stren);
+				cout << "\n    New record " << shot.toString() << endl;
+			} 
+			case 'q': break;
+			default: cout << "	Make a choise from 1 to 6, or just quit... \n ";
+		}
+
+	} while (Choice != 'q');
+	cout << " Exit from testing! " << endl;
+	return 6;
 }
 
 ostream& operator<<(ostream& os, PIB& a) {
@@ -966,5 +983,4 @@ istream& operator>>(istream& is, Adult& a) {
 		is >> a.nameChild[i];
 	return is;
 }
-
 

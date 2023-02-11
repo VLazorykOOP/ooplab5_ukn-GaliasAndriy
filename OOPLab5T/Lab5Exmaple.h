@@ -8,6 +8,8 @@ int mainExample2();
 int mainExample3();
 int mainExample4();
 int mainExample5();
+
+int mainTask1();
 using namespace std;
 // 
 class ObjInner {
@@ -442,4 +444,96 @@ public:
 	friend ostream& operator<<(ostream& os, Adult& a);
 	friend istream& operator>>(istream& os, Adult& a);
 
+};
+
+
+class Liquid {
+private:
+	string title;
+	float densities;
+public:
+	Liquid() {
+		title = "default";
+		densities = NULL;	
+		cout << "	Liquid() default constructor " << endl;
+	}
+	/*Liquid(string name) {
+		title = name;
+		densities = NULL;
+		cout << " Liquid with name parameter " << endl;
+	}*/
+	Liquid(string name, float dens) {
+		title = name;
+		densities = dens;
+		cout << "	Liquid with both parameters " << endl;
+	}
+	Liquid(Liquid& s) {
+		title = s.title;
+		densities = s.densities;
+		cout << "	Liquid copy main class(parent) " << endl;
+	}
+	Liquid& operator=(const Liquid& s) {
+		title = s.title;
+		densities = s.densities;
+	}
+	string toString() {
+		string dens, result;
+		dens = to_string(densities);
+		result = "	Name: " + title + "\n	densities: " + dens;
+		return result;
+	}
+	~Liquid() {
+		cout << "	Liquid destructor " << endl;
+	}
+
+	void Output() {
+		cout << toString() << endl;
+	}
+	void setDensities(float dens) {
+		if (dens >= 0.0010 && dens <= 1.3) {
+			densities = dens;
+		}
+		else {
+			cout << "	Densities " << dens << " is a wrong data, densities is " << densities << endl;
+		}
+	}
+};
+
+class AlcoholDrinks : public Liquid {
+private:
+	float strength;
+public:
+	AlcoholDrinks() {
+		strength = NULL;
+		cout << "	Child class AlcoholDrinks " << endl;
+	}
+	AlcoholDrinks(string name, float dens, float stren) {
+		Liquid(name, dens);
+		strength = stren;
+		cout << "	Constructor Alcohol(string name, double dens, double stren) " << endl;
+	}
+
+	AlcoholDrinks(AlcoholDrinks& s) {
+		cout << "	Derived copy class(reference) " << endl;
+	}
+	~AlcoholDrinks() {
+		cout << "	AlcoholDrinks destructor " << endl;
+	}
+	string toString() {
+		string stren;
+		stren = to_string(strength);
+		string result = Liquid::toString() + "\n	Strength:" + stren + " \n";
+		return result;
+	}
+	void Output() {
+		cout << toString() << endl;
+	}
+	void setStrength(float stren) {
+		if (stren >= 0.5 && stren <= 65) {
+			strength = stren;
+		}
+		else {
+			cout << "	Strength " << stren << " is a wrong data" << endl;
+		}
+	}
 };
