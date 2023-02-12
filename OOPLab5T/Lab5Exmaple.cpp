@@ -925,12 +925,81 @@ int mainTask1() {
 				cout << "\n    New record " << shot.toString() << endl;
 			} 
 			case 'q': break;
-			default: cout << "	Make a choise from 1 to 6, or just quit... \n ";
+			default: cout << "	Make a choice from 1 to 6, or just quit... \n ";
 		}
 
 	} while (Choice != 'q');
 	cout << " Exit from testing! " << endl;
 	return 6;
+}
+
+int mainTask2() {
+	char Choice;
+	do {
+		cout << "\n---------| Main menu |--------\n";
+		cout << "	1 - Default constructor Wheel \n";
+		cout << "	2 - Default constructor Bike \n";
+		cout << "	3 - Wheel(float size, float thick, float price, string type, string brand) \n";
+		cout << "	4 - Bike(float whSize, float thick, float price, string type, string brand,\n            float size, string bikType, string brType, string fDer, string bDer,\n            string f, string manuf) : Wheel(whSize, thick, price, type, brand) \n\n";
+		cout << "	5 - Enter data about a bike, using function Input()\n";
+		cout << "	6 - Constructor of copying for a Bike class\n";
+		cout << "	7 - Constructor for a Car with params Bike(brakeType) and Wheel(...)\n";
+
+		cout << "	q - Quit \n\n";
+		cout << "	Your choice: ";
+		cin >> Choice;
+		switch (Choice) {
+			case '1': {
+				Wheel test;
+				cout << test.toString() << endl;
+			} break;
+			case '2': {
+				Bike test;
+				cout << test.toString() << endl;
+			} break;
+			case '3': {
+				Wheel shimOffWheel(27.5, 2.2, 35, "off-road", "Shimano");
+				cout << shimOffWheel.toString();
+				Wheel shimRoadWheel(29, 1.5, 70.49, "road", "Shimano");
+				cout << shimRoadWheel.toString();
+			} break;
+			case '4': {
+				Bike expensiveBike(26, 2.1, 215.90, "off-road", "Swiss", "XL", "mountain bike",
+					"hydraulic", "shimano XT", "shimano XT", "Rock Shock", "BMC Switzerland", 3149.00);
+				cout << expensiveBike.toString();
+			} break;
+			case '5': {
+				Bike test;
+				cout << "\n\n Enter data about a bike: " << endl;
+				test.Input();
+				cout << "\n Entered data:\n" << test.toString() << endl;
+			} break;
+			case '6': {
+				Bike expensiveBike(26, 2.1, 215.90, "off-road", "Swiss", "XL", "mountain bike",
+					"hydraulic", "shimano XT", "shimano XT", "Rock Shock", "BMC Switzerland", 3149.00);
+				cout << expensiveBike.toString();
+				Bike theSameBike(expensiveBike);
+				cout << "theSameBike(expensiveBike) " << endl;
+				cout << theSameBike.toString() << endl;
+			} break;
+			case '7': {
+				Car bmwCar("disc", 17, 25, 1000, "road", "Michelin", "BMW", "M850i", "sport car", 460, 2440, 100000);
+				cout << bmwCar.toString() << endl;
+			} break;
+			case '8': {
+				Car test;
+				cout << "\n\n Enter data about a car: " << endl;
+				test.Input();
+				cout << "\n Entered data:\n" << test.toString() << endl;
+			} break;
+			case 'q': break;
+			default: cout << "	Make a choice from 1 to 6, or just quit... \n ";
+
+		}
+
+	} while (Choice != 'q');
+	cout << " Exit from testing! " << endl;
+	return 77;
 }
 
 ostream& operator<<(ostream& os, PIB& a) {

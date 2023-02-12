@@ -10,6 +10,7 @@ int mainExample4();
 int mainExample5();
 
 int mainTask1();
+int mainTask2();
 using namespace std;
 // 
 class ObjInner {
