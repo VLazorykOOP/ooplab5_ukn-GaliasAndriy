@@ -1,6 +1,8 @@
 ﻿#include <fstream>
 #include <iostream>
 #include "Lab5Exmaple.h"
+#include "Task1.h"
+#include "Task2.h"
 using namespace std;
 
 namespace Exp4 {
@@ -912,7 +914,7 @@ int mainTask1() {
 				AlcoholDrinks shot("Oakheart", 0.9500, 35);
 				shot.toString();
 				cout << shot.toString() << endl;
-				cout << " Change densities: ";
+				cout << " Change strength: ";
 				float stren;
 				while (!(cin >> stren)) {
 					cin.clear();

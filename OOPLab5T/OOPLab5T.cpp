@@ -3,6 +3,8 @@
 // Ваші файли загловки 
 //
 #include "Lab5Exmaple.h"
+#include "Task1.h"
+#include "Task2.h"
 int main()
 {
     std::cout << " Lab #5  !\n";
