@@ -944,6 +944,7 @@ int mainTask2() {
 		cout << "	5 - Enter data about a bike, using function Input()\n";
 		cout << "	6 - Constructor of copying for a Bike class\n";
 		cout << "	7 - Constructor for a Car with params Bike(brakeType) and Wheel(...)\n";
+		cout << "	8 - Input data about a car\n";
 
 		cout << "	q - Quit \n\n";
 		cout << "	Your choice: ";
@@ -958,13 +959,13 @@ int mainTask2() {
 				cout << test.toString() << endl;
 			} break;
 			case '3': {
-				Wheel shimOffWheel(27.5, 2.2, 35, "off-road", "Shimano");
+				Wheel shimOffWheel(27.5, "2.2", 35, "off-road", "Shimano");
 				cout << shimOffWheel.toString();
-				Wheel shimRoadWheel(29, 1.5, 70.49, "road", "Shimano");
+				Wheel shimRoadWheel(29, "1.5", 70.49, "road", "Shimano");
 				cout << shimRoadWheel.toString();
 			} break;
 			case '4': {
-				Bike expensiveBike(26, 2.1, 215.90, "off-road", "Swiss", "XL", "mountain bike",
+				Bike expensiveBike(26, "2.1", 215.90, "off-road", "Swiss", "XL", "mountain bike",
 					"hydraulic", "shimano XT", "shimano XT", "Rock Shock", "BMC Switzerland", 3149.00);
 				cout << expensiveBike.toString();
 			} break;
@@ -975,7 +976,7 @@ int mainTask2() {
 				cout << "\n Entered data:\n" << test.toString() << endl;
 			} break;
 			case '6': {
-				Bike expensiveBike(26, 2.1, 215.90, "off-road", "Swiss", "XL", "mountain bike",
+				Bike expensiveBike(26, "2.1", 215.90, "off-road", "Swiss", "XL", "mountain bike",
 					"hydraulic", "shimano XT", "shimano XT", "Rock Shock", "BMC Switzerland", 3149.00);
 				cout << expensiveBike.toString();
 				Bike theSameBike(expensiveBike);
@@ -983,7 +984,7 @@ int mainTask2() {
 				cout << theSameBike.toString() << endl;
 			} break;
 			case '7': {
-				Car bmwCar("disc", 17, 25, 1000, "road", "Michelin", "BMW", "M850i", "sport car", 460, 2440, 100000);
+				Car bmwCar("disc", 17, "275/35", 1000, "road", "Michelin", "BMW", "M850i", "sport car", 460, 2440, 100000);
 				cout << bmwCar.toString() << endl;
 			} break;
 			case '8': {
